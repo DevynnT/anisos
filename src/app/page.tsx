@@ -2,6 +2,9 @@ import Image from 'next/image'
 
 export default function Home() {
   return (
-    <h1>hello</h1>
+    <div className='green-gradient'>
+      <h1>hello</h1>
+      <p>hi</p>
+    </div>
   )
 }

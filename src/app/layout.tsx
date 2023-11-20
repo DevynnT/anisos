@@ -21,7 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${rubik.className} ${bree.className}`}>{children}</body>
+      <body className={`${rubik.variable} ${bree.variable}`}>{children}</body>
     </html>
   );
 }
