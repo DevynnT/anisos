@@ -88,7 +88,7 @@ const ResultPage = () => {
     </div>
   ))}
   
-  <div className="bg-green-300 p-4 rounded-lg mb-4">
+  <div className="green-gradient p-4 rounded-lg mb-4">
     <p>If you need more assistance ...</p>
     <p className="font-bold">{resultData.assistance.name}</p>
     <p>{resultData.assistance.phone}</p>
@@ -96,14 +96,14 @@ const ResultPage = () => {
   </div>
   
   <div className="flex justify-around">
-    <button className="p-2 bg-green-500 rounded-full text-black flex items-center">
+    <button className="p-2 bg-green-400 rounded-full text-black flex items-center">
       <span className="flex items-center">
         <Image src="/save.svg" alt="Map Icon" width={20} height={20} />
         <span className="ml-2">Show on Map</span>
       </span>
     </button>
     <Link href={`tel:${resultData.assistance.phone}`}>
-      <div className="p-2 bg-green-500 rounded-full text-black flex items-center">
+      <div className="p-2 bg-green-400 rounded-full text-black flex items-center">
         <span className="flex items-center">
           <Image src="/call.svg" alt="Call Icon" width={20} height={20} />
           <span className="ml-2">Please call us</span>

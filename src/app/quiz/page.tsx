@@ -65,7 +65,7 @@ const FirstAidQuiz = () => {
     
       return (
         <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
-          <div className="bg-blue rounded-lg shadow-md p-8 w-full max-w-md bg-green-gradient">
+          <div className="rounded-lg shadow-md p-8 w-full max-w-md green-gradient">
             <div className="flex justify-center items-center mb-4">
               <span className="text-xl font-semibold">First Aid Quiz</span>
             </div>
@@ -84,7 +84,7 @@ const FirstAidQuiz = () => {
                   <button
                     key={option.text}
                     className={`flex items-center justify-center p-4 border rounded-lg ${
-                      isSelected(index) ? 'bg-green-500' : 'bg-gray-100'
+                      isSelected(index) ? 'bg-green-gradient' : 'bg-gray-100'
                     }`}
                     onClick={() => selectOption(index)}
                   >
@@ -105,7 +105,7 @@ const FirstAidQuiz = () => {
             <div className="flex flex-col items-center">
               <button
                 onClick={handleNext}
-                className={`bg-green-500 text-white px-6 py-2 rounded-lg mb-2 ${
+                className={`bg-green-600 text-white px-6 py-2 rounded-lg mb-2 ${
                   selectedOptions[questionIndex] === null ? 'opacity-50 cursor-not-allowed' : ''
                 }`}
                 disabled={selectedOptions[questionIndex] === null}
