@@ -42,6 +42,6 @@
 
 @layer components {
     .green-gradient {
-        @apply bg-gradient-to-r from-[#B3CA5E] to-[#F56364];
+        @apply bg-gradient-to-r from-[#B3CA5E] to-[#F56364] to-transparent;
     }
 }
