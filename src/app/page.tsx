@@ -1,39 +1,43 @@
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
-      <div className="rounded-lg shadow-md p-8 w-full max-w-md green-gradient">
-        <div className="grid grid-rows-5 items-center justify-center my-10">
-          <div className="place-self-stretch row-span-2">
+      <div className="bg-[#DFE3DB] rounded-lg shadow-md p-8 w-full h-screen max-w-md border border-gray-900 overflow-auto">
+        <div className="items-center justify-center m-20">
+          <div className="grid grid-cols-1 gap-8">
             <Image
               src="/logo.svg"
               alt="Picture of the author"
-              width={300}
-              height={300}
+              width={250}
+              height={250}
             />
+            <h1
+              className="font-extrabold text-5xl text-center"
+              style={{ fontFamily: "Koh Santepheap" }}
+            >
+              aniSOS
+            </h1>
           </div>
-          <h1
-            className="font-extrabold text-5xl text-center"
-            style={{ fontFamily: "Koh Santepheap" }}
-          >
-            aniSOS
-          </h1>
-          <div className="text-center row-span-1 grid grid-rows-2 gap-5 place-self-center w-full relative bottom-9">
-            <button className="bg-[#B2CC4F] hover:bg-blue-700 text-black text-xl font-bold rounded-full py-2 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
-              Get Started
-            </button>
-            <button className="bg-[#B2CC4F] hover:bg-blue-700 text-black text-xl font-bold rounded-full shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
+          <div className="text-center grid grid-rows-2 gap-5 place-self-center w-full relative top-10">
+            <Link href="/home">
+              <button className="bg-[#B2CC4F] hover:bg-[#F56364] text-black text-xl font-bold rounded-full py-2 w-full shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
+                Get Started
+              </button>
+            </Link>
+
+            <button className="bg-[#B2CC4F] hover:bg-[#F56364] text-black text-xl font-bold rounded-full py-2 w-full shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
               Sign In
             </button>
             <p className="text-lg">
-              New? <span className="text-[#367510]">Sign Up</span>
+              New?{" "}
+              <span className="text-[#367510] hover:text-[#F56364] hover:cursor-pointer">
+                Sign Up
+              </span>
             </p>
           </div>
         </div>
-        <div className="flex justify-center items-center mb-4"></div>
-
-        <div className="flex justify-center"></div>
       </div>
     </div>
   );
