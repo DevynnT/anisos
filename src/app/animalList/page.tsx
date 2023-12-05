@@ -1,9 +1,7 @@
 import NavBar from "@/components/NavBar";
 import SearchBar from "@/components/SearchBar";
 import TopBanner from "@/components/TopBanner";
-import Link from "next/link";
-
-import fakeDatabaseAnimal from "@/fakeDbSelina";
+import { fakeDatabaseAnimal } from "@/fakeDbSelina";
 import AnimalListContainer from "@/components/AnimalListContainer";
 
 export default function AnimalList() {
@@ -16,10 +14,9 @@ export default function AnimalList() {
         </div>
         <div className="overflow-scroll grid grid-cols-2 m-5 gap-5 h-4/5 pb-10 overflow-x-hidden">
           {fakeDatabaseAnimal.map((animal) => (
-            <AnimalListContainer animal={animal} />
+            <AnimalListContainer key={animal.id} animal={animal} />
           ))}
         </div>
-
         <NavBar />
       </div>
     </div>
