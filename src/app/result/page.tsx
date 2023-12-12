@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-//
+import { AiOutlineArrowLeft } from 'react-icons/ai';
 
 const useCurrentDate = () => {
   const [currentDate, setCurrentDate] = useState('');
@@ -55,6 +55,7 @@ const generateResultData = (selections: string[]) => {
 
 const ResultPage = () => {
       const [selections, setSelections] = useState([]);
+      const router = useRouter();
     
       useEffect(() => {
         const searchParams = new URLSearchParams(window.location.search);
@@ -67,53 +68,66 @@ const ResultPage = () => {
   const resultData = generateResultData(selections);
 
   return (
-    <div className="min-h-screen bg-gray-100 flex flex-col items-center justify-center p-4">
-      <div className="bg-white rounded-lg shadow-md p-8 w-full max-w-md">
-        <div className="mb-4 bg-white rounded-full shadow p-2 flex items-center justify-center">
-  <span className="text-lg font-semibold">Here is the First Aid for this animal!</span>
-        </div>
-        <div className="mb-4 bg-white rounded-lg shadow p-8 w-full max-w-md">
-  <p className="mb-4">According to you, this animal is ...</p>
-  
-  <div className="flex justify-around mb-4">
-    <span className="p-2 bg-gray-200 rounded-full">{resultData.condition}</span>
-    <span className="p-2 bg-gray-200 rounded-full">{resultData.consciousness}</span>
-  </div>
-  
-  <p className="mb-4">{resultData.bleeding}</p>
-  
-  {resultData.tips.map((tip, index) => (
-    <div key={index} className="flex items-center mb-2">
-      <Image src="/tip.svg" alt="Tip Icon" width={20} height={20} />
-      <span className="ml-2">{tip}</span>
-    </div>
-  ))}
-  
-  <div className="green-gradient p-4 rounded-lg mb-4">
-    <p>If you need more assistance ...</p>
-    <p className="font-bold">{resultData.assistance.name}</p>
-    <p>{resultData.assistance.phone}</p>
-    <p>{resultData.assistance.hours}</p>
-  </div>
-  
-  <div className="flex justify-around">
-    <button className="p-2 bg-green-400 rounded-full text-black flex items-center">
-      <span className="flex items-center">
-        <Image src="/save.svg" alt="Map Icon" width={20} height={20} />
-        <span className="ml-2">Show on Map</span>
-      </span>
-    </button>
-    <Link href={`tel:${resultData.assistance.phone}`}>
-      <div className="p-2 bg-green-400 rounded-full text-black flex items-center">
-        <span className="flex items-center">
-          <Image src="/call.svg" alt="Call Icon" width={20} height={20} />
-          <span className="ml-2">Please call us</span>
-        </span>
+    <div className="min-h-screen bg-gray-100 p-4">
+    <div className="max-w-md mx-auto">
+      {/* Back Button with SVG */}
+      <div className="mb-4 text-black">
+        <button onClick={() => router.push('/')} className="flex items-center">
+          <Image src="/back.svg" alt="Back" width={24} height={24} />
+        </button>
       </div>
-    </Link>
-  </div>
-</div>
-</div>
+
+        {/* Content */}
+        <div className="bg-white rounded-lg shadow-md p-8">
+          <div className="mb-4 rounded-full shadow p-2 flex items-center justify-center">
+            <span className="text-lg font-semibold">Here is the First Aid for this animal!</span>
+          </div>
+
+          {/* Animal Condition */}
+          <div className="mb-4">
+            <p>According to you, this animal is ...</p>
+            <div className="flex justify-around my-4">
+              <span className="p-2 bg-gray-200 rounded-full">{resultData.condition}</span>
+              <span className="p-2 bg-gray-200 rounded-full">{resultData.consciousness}</span>
+            </div>
+            <p>{resultData.bleeding}</p>
+          </div>
+
+          {/* Tips */}
+          {resultData.tips.map((tip, index) => (
+            <div key={index} className="flex items-center mb-2">
+              <Image src="/tip.svg" alt="Tip Icon" width={20} height={20} />
+              <span className="ml-2">{tip}</span>
+            </div>
+          ))}
+
+          {/* Assistance Info */}
+          <div className="green-gradient p-4 rounded-lg my-4">
+            <p>If you need more assistance ...</p>
+            <p className="font-bold">{resultData.assistance.name}</p>
+            <p>{resultData.assistance.phone}</p>
+            <p>{resultData.assistance.hours}</p>
+          </div>
+
+          {/* Action Buttons */}
+          <div className="flex justify-around">
+            <button className="p-2 bg-green-400 rounded-full text-black flex items-center">
+              <span className="flex items-center">
+                <Image src="/save.svg" alt="Map Icon" width={20} height={20} />
+                <span className="ml-2">Show on Map</span>
+              </span>
+            </button>
+            <Link href={`tel:${resultData.assistance.phone}`}>
+              <div className="p-2 bg-green-400 rounded-full text-black flex items-center">
+                <span className="flex items-center">
+                  <Image src="/call.svg" alt="Call Icon" width={20} height={20} />
+                  <span className="ml-2">Please call us</span>
+                </span>
+              </div>
+            </Link>
+          </div>
+        </div>
+      </div>
     </div>
   );
 };
