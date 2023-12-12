@@ -18,7 +18,11 @@ const config: Config = {
           ["dark-gray"]: "#4E4E4E",
           ["light-gray"]: "#C4C4C4",
           pink: "#F55253",
+
         },
+      },
+      backgroundImage: {
+        'green-gradient': 'linear-gradient(to bottom right, #10B981, #6EE7B7)', // Example green gradient
       },
     },
   },
