@@ -9,7 +9,7 @@ export default function Home() {
           <div className="grid grid-cols-1 gap-8">
             <Image
               src="/logo.svg"
-              alt="Picture of the author"
+              alt="Logo"
               width={250}
               height={250}
             />
@@ -20,10 +20,17 @@ export default function Home() {
               aniSOS
             </h1>
           </div>
-          <div className="text-center grid grid-rows-2 gap-5 place-self-center w-full relative top-10">
+          <div className="text-center grid grid-rows-3 gap-5 place-self-center w-full relative top-10">
             <Link href="/home">
               <button className="bg-[#B2CC4F] hover:bg-[#F56364] text-black text-xl font-bold rounded-full py-2 w-full shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
                 Get Started
+              </button>
+            </Link>
+
+            {/* First Aid Quiz Button */}
+            <Link href="/quiz"> {/* Update the href with the correct path to your quiz */}
+              <button className="bg-[#B2CC4F] hover:bg-[#F56364] text-black text-xl font-bold rounded-full py-2 w-full shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
+                First Aid Quiz
               </button>
             </Link>
 
