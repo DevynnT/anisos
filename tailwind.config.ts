@@ -18,6 +18,7 @@ const config: Config = {
           "dark-gray": "#4E4E4E",
           "light-gray": "#C4C4C4",
           pink: "#F55253",
+
         },
       },
       // Add your custom gradient here
