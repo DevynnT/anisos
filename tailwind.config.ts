@@ -15,12 +15,13 @@ const config: Config = {
       colors: {
         primary: {
           green: "#B2CC4F",
-          ["dark-gray"]: "#4E4E4E",
-          ["light-gray"]: "#C4C4C4",
+          "dark-gray": "#4E4E4E",
+          "light-gray": "#C4C4C4",
           pink: "#F55253",
 
         },
       },
+      // Add your custom gradient here
       backgroundImage: {
         'green-gradient': 'linear-gradient(to bottom right, #10B981, #6EE7B7)', // Example green gradient
       },
@@ -28,4 +29,5 @@ const config: Config = {
   },
   plugins: [],
 };
+
 export default config;
