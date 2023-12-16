@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { AiOutlineArrowLeft } from "react-icons/ai";
+import React, { useState, useEffect } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { AiOutlineArrowLeft } from 'react-icons/ai';
+import TopBanner from '@/components/TopBanner';
+import NavBar from '@/components/NavBar';
 
 const useCurrentDate = () => {
   const [currentDate, setCurrentDate] = useState("");
@@ -73,26 +75,14 @@ const ResultPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">
-      <div className="max-w-md mx-auto">
-        {/* Back Button with SVG */}
-        <div className="mb-4 text-black">
-          <button
-            onClick={() => router.push("/home")}
-            className="flex items-center"
-          >
-            <Image src="/back.svg" alt="Back" width={24} height={24} />
-          </button>
-        </div>
-
-        {/* Content */}
-        <div className="bg-white rounded-lg shadow-md p-8">
-          <div className="mb-4 rounded-full shadow p-2 flex items-center justify-center">
-            <span className="text-lg font-semibold">
-              Here is the First Aid for this animal!
-            </span>
+    <div className="max-w-md mx-auto bg-white rounded-lg shadow-md">
+      <TopBanner /> 
+      
+      <div className="p-8">
+        <div className="mb-4 rounded-full shadow p-2 flex items-center justify-center">
+          <span className="text-lg font-semibold">Here is the First Aid for this animal!</span>
           </div>
 
-          {/* Animal Condition */}
           <div className="mb-4">
             <p>According to you, this animal is ...</p>
             <div className="flex justify-around my-4">
@@ -106,7 +96,6 @@ const ResultPage = () => {
             <p>{resultData.bleeding}</p>
           </div>
 
-          {/* Tips */}
           {resultData.tips.map((tip, index) => (
             <div key={index} className="flex items-center mb-2">
               <Image src="/tip.svg" alt="Tip Icon" width={20} height={20} />
@@ -114,7 +103,6 @@ const ResultPage = () => {
             </div>
           ))}
 
-          {/* Assistance Info */}
           <div className="green-gradient p-4 rounded-lg my-4">
             <p>If you need more assistance ...</p>
             <p className="font-bold">{resultData.assistance.name}</p>
@@ -122,7 +110,6 @@ const ResultPage = () => {
             <p>{resultData.assistance.hours}</p>
           </div>
 
-          {/* Action Buttons */}
           <div className="flex justify-around">
             <button className="p-2 bg-green-400 rounded-full text-black flex items-center">
               <span className="flex items-center">
@@ -145,9 +132,10 @@ const ResultPage = () => {
             </Link>
           </div>
         </div>
+        <NavBar />
       </div>
     </div>
   );
-};
+}
 
 export default ResultPage;
