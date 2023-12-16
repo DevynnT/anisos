@@ -1,4 +1,4 @@
-import { Animal } from "@/fakeDbSelina";
+import { Animal } from "@/fakeDb";
 import Link from "next/link";
 
 export default function AnimalListContainer({ animal }: { animal: Animal }) {

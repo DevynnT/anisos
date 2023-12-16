@@ -1,53 +1,68 @@
-import Image from 'next/image'
-import Link from 'next/link'
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+
+// Fake database
+const fakeDatabase = [
+  {
+    id: 1,
+    name: "Bald-Eagle",
+    scientificName: "Haliaeetus leucocephalus",
+    imageSrc: "/bald-eagle.webp",
+    detailsLink: "./detail/bald-eagle",
+    status: ["Leg Injured", "Alive", "Female", "Richmond"],
+  },
+  {
+    id: 2,
+    name: "Raccoon",
+    scientificName: "Procyon lotor",
+    imageSrc: "/raccoon.webp",
+    detailsLink: "./detail/raccoon",
+    status: ["Head Injured", "Alive", "Male", "Vancouver"],
+  },
+  // Add more data as needed
+];
 
 export default function AnimalGrid() {
-    return (
-        <>
-            <div className="bg-white rounded-md flex flex-col justify-center m-4">
-                <div className='relative inline-block m-4'>
-                    <Image src="/bald-eagle.webp" alt="Bird" width={400} height={300} className="rounded-lg" />
-                    <Link href='./detail/bald-eagle'>
-                        <button className="absolute bottom-0 right-0 mb-2 mr-2  rounded-lg text-white p-2 bg-primary-pink"><p>Click here to help</p></button>
-                    </Link>
-                </div>
+  const [animals] = useState(fakeDatabase);
 
-                <div>
-                    <p className="text-3xl font-semibold m-4">Bald Eagle</p>
-                    <p className="text-xl m-4 italic ">Haliaeetus leucocephalus</p>
+  return (
+    <>
+      {animals.map((animal) => (
+        <div
+          key={animal.id}
+          className="bg-white rounded-3xl flex flex-col justify-center m-4 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]"
+        >
+          <div className="relative inline-block m-4">
+            <Image
+              src={animal.imageSrc}
+              alt={animal.name}
+              width={400}
+              height={300}
+              className="rounded-lg"
+            />
+            <Link href={`/detail/${animal.name}`}>
+              <button className="absolute bottom-0 right-0 mb-5 mr-2  rounded-3xl text-white p-2 bg-primary-pink">
+                <p>Click here to help</p>
+              </button>
+            </Link>
+          </div>
 
-                </div>
-                <div className='flex flex-wrap mb-3 ml-1 '>
-                    <p className="bg-gray-200 rounded-lg text-xs m-2 p-2">Leg Injured</p>
-                    <p className="bg-gray-200 rounded-lg text-xs m-2 p-2">Alive</p>
-                    <p className="bg-gray-200 rounded-lg text-xs m-2 p-2">Female</p>
-                    <p className="bg-gray-200 rounded-lg text-xs m-2 p-2">Richmond</p>
-
-                </div>
-            </div>
-
-            <div className="bg-white rounded-md flex flex-col justify-center m-4">
-                <div className='relative inline-block m-4'>
-                    <Image src="/raccoon.webp" alt="Raccoon" width={400} height={300} className="rounded-lg" />
-                    <Link href='./detail/raccoon'>
-                        <button className="absolute bottom-0 right-0 mb-2 mr-2  rounded-lg text-white p-2 bg-primary-pink"><p>Click here to help</p></button>
-                    </Link>
-                </div>
-
-                <div>
-                    <p className="text-3xl font-semibold m-4">Raccoon</p>
-                    <p className="text-xl m-4 italic ">Procyon lotor</p>
-
-                </div>
-                <div className='flex flex-wrap mb-3 ml-1 '>
-                    <p className="bg-gray-200 rounded-lg text-xs m-2 p-2">Head Injured</p>
-                    <p className="bg-gray-200 rounded-lg text-xs m-2 p-2">Alive</p>
-                    <p className="bg-gray-200 rounded-lg text-xs m-2 p-2">Male</p>
-                    <p className="bg-gray-200 rounded-lg text-xs m-2 p-2">Vancouver</p>
-
-                </div>
-            </div>
-        </>
-    )
-        
+          <div>
+            <p className="text-3xl font-semibold m-4">{animal.name}</p>
+            <p className="text-xl m-4 italic ">{animal.scientificName}</p>
+          </div>
+          <div className="flex flex-wrap mb-3 ml-1 ">
+            {animal.status.map((status, index) => (
+              <p key={index} className="bg-gray-200 text-xs m-2 p-2">
+                {status}
+              </p>
+            ))}
+          </div>
+        </div>
+      ))}
+    </>
+  );
 }
