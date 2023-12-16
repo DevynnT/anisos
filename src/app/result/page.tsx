@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
+import TopBanner from '@/components/TopBanner';
 
 const useCurrentDate = () => {
   const [currentDate, setCurrentDate] = useState("");
