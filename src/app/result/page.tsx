@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
-import Link from 'next/link';
-import { useRouter } from 'next/navigation';
-import { AiOutlineArrowLeft } from 'react-icons/ai';
+import React, { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import { useRouter } from "next/navigation";
+import { AiOutlineArrowLeft } from "react-icons/ai";
 
 const useCurrentDate = () => {
-  const [currentDate, setCurrentDate] = useState('');
+  const [currentDate, setCurrentDate] = useState("");
 
   useEffect(() => {
     setCurrentDate(new Date().toDateString());
@@ -19,76 +19,89 @@ const useCurrentDate = () => {
 const generateResultData = (selections: string[]) => {
   const tips = [];
 
-  const condition = selections[0] || 'Unknown';
-  const consciousness = selections[1] || 'Unknown';
-  const bleeding = selections[2] === 'Yes' ? 'Bleeding or Open Wounds' : 'No Bleeding or Open Wounds';
+  const condition = selections[0] || "Unknown";
+  const consciousness = selections[1] || "Unknown";
+  const bleeding =
+    selections[2] === "Yes"
+      ? "Bleeding or Open Wounds"
+      : "No Bleeding or Open Wounds";
 
-  if (condition === 'Head') {
-    tips.push('Be careful not to move the animal too much as it might have a head injury.');
-  } else if (condition === 'Legs' || condition === 'Arms') {
-    tips.push('Check for possible fractures or strains.');
+  if (condition === "Head") {
+    tips.push(
+      "Be careful not to move the animal too much as it might have a head injury."
+    );
+  } else if (condition === "Legs" || condition === "Arms") {
+    tips.push("Check for possible fractures or strains.");
   } else {
-    tips.push('Observe the animal closely for any signs of injury.');
+    tips.push("Observe the animal closely for any signs of injury.");
   }
 
-  if (consciousness === 'Unconscious') {
-    tips.push('Do not give any food or water as it could cause choking.');
+  if (consciousness === "Unconscious") {
+    tips.push("Do not give any food or water as it could cause choking.");
   } else {
-    tips.push('Try to keep the animal calm and quiet.');
+    tips.push("Try to keep the animal calm and quiet.");
   }
 
-  if (bleeding === 'Bleeding or Open Wounds') {
-    tips.push('Apply gentle pressure to the wound to stop bleeding.');
+  if (bleeding === "Bleeding or Open Wounds") {
+    tips.push("Apply gentle pressure to the wound to stop bleeding.");
   } else {
-    tips.push('Ensure the animal is comfortable and not in distress.');
+    tips.push("Ensure the animal is comfortable and not in distress.");
   }
 
   const assistance = {
-      name: 'BC SPCA Vancouver',
-      phone: '(604)-879-7721',
-      hours: 'Office Hour: 8:00 AM - 10:30 PM', 
-    };
-    
+    name: "BC SPCA Vancouver",
+    phone: "(604)-879-7721",
+    hours: "Office Hour: 8:00 AM - 10:30 PM",
+  };
 
   return { condition, consciousness, bleeding, tips, assistance };
 };
 
 const ResultPage = () => {
-      const [selections, setSelections] = useState([]);
-      const router = useRouter();
-    
-      useEffect(() => {
-        const searchParams = new URLSearchParams(window.location.search);
-        const selectionsParam = searchParams.get('selections');
-        if (selectionsParam) {
-          setSelections(JSON.parse(decodeURIComponent(selectionsParam)));
-        }
-      }, []);
+  const [selections, setSelections] = useState([]);
+  const router = useRouter();
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    const selectionsParam = searchParams.get("selections");
+    if (selectionsParam) {
+      setSelections(JSON.parse(decodeURIComponent(selectionsParam)));
+    }
+  }, []);
 
   const resultData = generateResultData(selections);
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">
-    <div className="max-w-md mx-auto">
-      {/* Back Button with SVG */}
-      <div className="mb-4 text-black">
-        <button onClick={() => router.push('/')} className="flex items-center">
-          <Image src="/back.svg" alt="Back" width={24} height={24} />
-        </button>
-      </div>
+      <div className="max-w-md mx-auto">
+        {/* Back Button with SVG */}
+        <div className="mb-4 text-black">
+          <button
+            onClick={() => router.push("/")}
+            className="flex items-center"
+          >
+            <Image src="/back.svg" alt="Back" width={24} height={24} />
+          </button>
+        </div>
 
         {/* Content */}
         <div className="bg-white rounded-lg shadow-md p-8">
           <div className="mb-4 rounded-full shadow p-2 flex items-center justify-center">
-            <span className="text-lg font-semibold">Here is the First Aid for this animal!</span>
+            <span className="text-lg font-semibold">
+              Here is the First Aid for this animal!
+            </span>
           </div>
 
           {/* Animal Condition */}
           <div className="mb-4">
             <p>According to you, this animal is ...</p>
             <div className="flex justify-around my-4">
-              <span className="p-2 bg-gray-200 rounded-full">{resultData.condition}</span>
-              <span className="p-2 bg-gray-200 rounded-full">{resultData.consciousness}</span>
+              <span className="p-2 bg-gray-200 rounded-full">
+                {resultData.condition}
+              </span>
+              <span className="p-2 bg-gray-200 rounded-full">
+                {resultData.consciousness}
+              </span>
             </div>
             <p>{resultData.bleeding}</p>
           </div>
@@ -120,7 +133,12 @@ const ResultPage = () => {
             <Link href={`tel:${resultData.assistance.phone}`}>
               <div className="p-2 bg-green-400 rounded-full text-black flex items-center">
                 <span className="flex items-center">
-                  <Image src="/call.svg" alt="Call Icon" width={20} height={20} />
+                  <Image
+                    src="/call.svg"
+                    alt="Call Icon"
+                    width={20}
+                    height={20}
+                  />
                   <span className="ml-2">Please call us</span>
                 </span>
               </div>

@@ -1,7 +1,7 @@
 import NavBar from "@/components/NavBar";
 import TopBanner from "@/components/TopBanner";
 import Link from "next/link";
-import { getAnimalById } from "@/fakeDbSelina";
+import { getAnimalById } from "@/fakeDb";
 import AnimalDetailContainer from "@/components/AnimalDetailContainer";
 
 export default function AnimalDetails({
