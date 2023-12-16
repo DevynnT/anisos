@@ -77,7 +77,7 @@ const ResultPage = () => {
         {/* Back Button with SVG */}
         <div className="mb-4 text-black">
           <button
-            onClick={() => router.push("/")}
+            onClick={() => router.push("/home")}
             className="flex items-center"
           >
             <Image src="/back.svg" alt="Back" width={24} height={24} />
