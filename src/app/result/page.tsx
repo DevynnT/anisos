@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
+import TopBanner from '@/components/TopBanner';
 
 const useCurrentDate = () => {
   const [currentDate, setCurrentDate] = useState('');
@@ -69,18 +70,13 @@ const ResultPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-100 p-4">
-    <div className="max-w-md mx-auto">
-      {/* Back Button with SVG */}
-      <div className="mb-4 text-black">
-        <button onClick={() => router.push('/')} className="flex items-center">
-          <Image src="/back.svg" alt="Back" width={24} height={24} />
-        </button>
-      </div>
-
-        {/* Content */}
-        <div className="bg-white rounded-lg shadow-md p-8">
-          <div className="mb-4 rounded-full shadow p-2 flex items-center justify-center">
-            <span className="text-lg font-semibold">Here is the First Aid for this animal!</span>
+    <div className="max-w-md mx-auto bg-white rounded-lg shadow-md">
+      <TopBanner /> {/* TopBanner component moved inside the white background div */}
+      
+      {/* The rest of your content goes here, following the TopBanner */}
+      <div className="p-8">
+        <div className="mb-4 rounded-full shadow p-2 flex items-center justify-center">
+          <span className="text-lg font-semibold">Here is the First Aid for this animal!</span>
           </div>
 
           {/* Animal Condition */}
@@ -130,6 +126,6 @@ const ResultPage = () => {
       </div>
     </div>
   );
-};
+}
 
 export default ResultPage;
