@@ -75,15 +75,13 @@ const ResultPage = () => {
   return (
     <div className="min-h-screen bg-gray-100 p-4">
     <div className="max-w-md mx-auto bg-white rounded-lg shadow-md">
-      <TopBanner /> {/* TopBanner component moved inside the white background div */}
+      <TopBanner /> 
       
-      {/* The rest of your content goes here, following the TopBanner */}
       <div className="p-8">
         <div className="mb-4 rounded-full shadow p-2 flex items-center justify-center">
           <span className="text-lg font-semibold">Here is the First Aid for this animal!</span>
           </div>
-
-          {/* Animal Condition */}
+          
           <div className="mb-4">
             <p>According to you, this animal is ...</p>
             <div className="flex justify-around my-4">
