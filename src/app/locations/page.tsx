@@ -31,7 +31,7 @@ export default function Locations() {
           className="object-cover h-full w-full z-10"
         />
         {visible && (
-          <div>
+          <div className="absolute" style={{ bottom: "10rem", left: "5.5rem" }}>
             <div className="green-gradient p-4 rounded-lg my-4">
               <p>If you need more assistance ...</p>
               <p className="font-bold">{resultData.assistance.name}</p>
