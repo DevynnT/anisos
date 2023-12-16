@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import TopBanner from '@/components/TopBanner';
+import NavBar from '@/components/NavBar';
 
 const useCurrentDate = () => {
   const [currentDate, setCurrentDate] = useState("");
@@ -131,6 +132,7 @@ const ResultPage = () => {
             </Link>
           </div>
         </div>
+        <NavBar />
       </div>
     </div>
   );
